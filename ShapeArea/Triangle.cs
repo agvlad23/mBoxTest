@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ShapeArea
 {
-    class Triangle : IShapeArea
+    public class Triangle : IShapeArea
     {
         public double side1 { get; set; }
         public double side2 { get; set; }
@@ -23,23 +23,29 @@ namespace ShapeArea
         }
         public Triangle(double Side1, double Side2, double Side3)
         {
-            if (!ViableTriangle(Side1, Side2, Side3))
-            {
-                this.side1 = 0;
-                this.side2 = 0;
-                this.side3 = 0;
-            }
-            else
-            {
                 this.side1 = Side1;
                 this.side2 = Side2;
                 this.side3 = Side3;
-            }
+            
         }
         public double Area()
         {
-            var p = (side1 + side2 + side3) / 2;
-            return Math.Sqrt(p * (p - side1) * (p - side2) * (p - side3)) ;
+            if (!ViableTriangle(side1, side2, side3))
+                return 0;
+            else
+            {
+                var p = (side1 + side2 + side3) / 2;
+                return Math.Sqrt(p * (p - side1) * (p - side2) * (p - side3));
+            }
+        }
+
+        public bool IsRight()
+        {
+            double[] Sides = new[] { side1, side2, side3 };
+            var hyp = Sides.Max();
+            Sides.Except(new[] { hyp });
+            var pif = Sides[0] * Sides[0] + Sides[1] * Sides[1];
+            return hyp * hyp == pif ? true : false;
         }
     }
 }

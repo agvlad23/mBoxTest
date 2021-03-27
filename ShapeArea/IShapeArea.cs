@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShapeArea
 {
-    interface IShapeArea
+    public interface IShapeArea
     {
         double Area();
     }

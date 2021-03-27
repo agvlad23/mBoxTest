@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShapeArea
 {
-    class Circle : IShapeArea
+    public class Circle : IShapeArea
     {
         double r;
         public Circle(double R)
@@ -13,7 +13,7 @@ namespace ShapeArea
         }
         public double Area()
         {
-            return r * r * 3.1416;
+            return r * r * Math.PI;
         }
     }
 }

@@ -1,0 +1,5 @@
+Пусть таблица product содержит - id продукта и наименования продукта, таблица prodCat - связывает id продукта и id категорий, а таблица categories - id и наименование категории
+
+select product,category from products p
+left join prodCat pc on p.id=pc.prod_id
+left join categories c on pc.c_id=c.id
